@@ -62,7 +62,8 @@ public class ProductServiceImpl implements IProductService {
             productEntity.setDescription(product.getDescription());
         }
         try {
-            return productRepository.saveAndFlush(productEntity);
+            return productRepository.callUpdateProduct(id, productEntity.getName(), productEntity.getPrice(),
+                    productEntity.getDescription());
         } catch (Exception e) {
             throw new ServiceFaultException("No se pudo actualizar el producto.", e, SoapStatus.FAIL.getStatus());
         }

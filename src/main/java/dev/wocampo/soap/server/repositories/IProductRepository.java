@@ -18,8 +18,6 @@ import dev.wocampo.soap.server.entities.ProductEntity;
 @Repository
 public interface IProductRepository extends JpaRepository<ProductEntity, Integer> {
 
-    // @Query(value = "CALL firstProcedure(:page_id);", nativeQuery = true)
-    // void deletePageCatalogById(@Param("page_id") Long page_id);
     @Query(value = "CALL GET_ALL_PRODUCTS();", nativeQuery = true)
     List<ProductEntity> callGetAllProducts();
 
@@ -28,6 +26,11 @@ public interface IProductRepository extends JpaRepository<ProductEntity, Integer
 
     @Query(value = "CALL SAVE_PRODUCT(:name, :price, :description);", nativeQuery = true)
     ProductEntity callSaveProduct(@Param("name") String name, @Param("price") Integer price,
+            @Param("description") String description);
+
+    @Query(value = "CALL UPDATE_PRODUCT(:product_id, :name, :price, :description);", nativeQuery = true)
+    ProductEntity callUpdateProduct(@Param("product_id") Integer product_id, @Param("name") String name,
+            @Param("price") Integer price,
             @Param("description") String description);
 
 }

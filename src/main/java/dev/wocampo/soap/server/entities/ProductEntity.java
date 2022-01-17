@@ -20,6 +20,11 @@ import javax.persistence.Table;
         @NamedStoredProcedureQuery(name = "SAVE_PRODUCT", procedureName = "SAVE_PRODUCT", parameters = {
                 @StoredProcedureParameter(mode = ParameterMode.IN, name = "name", type = String.class),
                 @StoredProcedureParameter(mode = ParameterMode.IN, name = "price", type = Integer.class),
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "description", type = String.class) }),
+        @NamedStoredProcedureQuery(name = "UPDATE_PRODUCT", procedureName = "UPDATE_PRODUCT", parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "product_id", type = Integer.class),
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "name", type = String.class),
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "price", type = Integer.class),
                 @StoredProcedureParameter(mode = ParameterMode.IN, name = "description", type = String.class) })
 })
 public class ProductEntity {
