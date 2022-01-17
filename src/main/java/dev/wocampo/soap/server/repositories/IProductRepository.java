@@ -26,4 +26,8 @@ public interface IProductRepository extends JpaRepository<ProductEntity, Integer
     @Query(value = "CALL GET_PRODUCT_BY_ID(:product_id);", nativeQuery = true)
     Optional<ProductEntity> callGetProductById(@Param("product_id") Integer product_id);
 
+    @Query(value = "CALL SAVE_PRODUCT(:name, :price, :description);", nativeQuery = true)
+    ProductEntity callSaveProduct(@Param("name") String name, @Param("price") Integer price,
+            @Param("description") String description);
+
 }

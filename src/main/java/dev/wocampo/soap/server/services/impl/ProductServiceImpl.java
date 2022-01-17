@@ -27,7 +27,6 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public ProductEntity getById(Integer id) {
-        // Optional<ProductEntity> productEntity = productRepository.findById(id);
         Optional<ProductEntity> productEntity = productRepository.callGetProductById(id);
         if (!productEntity.isPresent()) {
             throw new ProductException(String.format("El producto con id %s no existe.", id));
@@ -44,7 +43,7 @@ public class ProductServiceImpl implements IProductService {
             throw new ProductException("El precio del producto es requerido.");
         }
         try {
-            return productRepository.save(product);
+            return productRepository.callSaveProduct(product.getName(), product.getPrice(), product.getDescription());
         } catch (Exception e) {
             throw new ServiceFaultException("No se pudo registrar el producto.", e, SoapStatus.FAIL.getStatus());
         }
