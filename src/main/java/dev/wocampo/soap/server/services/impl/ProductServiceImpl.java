@@ -73,7 +73,7 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public void delete(Integer id) {
         try {
-            productRepository.deleteById(id);
+            productRepository.callDeleteProduct(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ProductException(String.format("El producto con id %s no existe.", id));
         }

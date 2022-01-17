@@ -33,4 +33,7 @@ public interface IProductRepository extends JpaRepository<ProductEntity, Integer
             @Param("price") Integer price,
             @Param("description") String description);
 
+    @Query(value = "CALL DELETE_PRODUCT(:product_id);", nativeQuery = true)
+    int callDeleteProduct(@Param("product_id") Integer product_id);
+
 }
