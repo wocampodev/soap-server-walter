@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.wocampo.dev/soap/server/webservice" targetNamespace="http://www.wocampo.dev/soap/server/webservice" elementFormDefault="qualified">
+
+  <xs:element name="getProductsRequest">
+    <xs:complexType />
+  </xs:element>
+
+  <xs:element name="getProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="status" type="tns:serviceStatus" />
+        <xs:element minOccurs="1" maxOccurs="unbounded" name="product" type="tns:product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getProductByIdRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getProductByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="status" type="tns:serviceStatus" />
+        <xs:element minOccurs="1" maxOccurs="1" name="product" type="tns:product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="saveProductRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="price" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="saveProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="status" type="tns:serviceStatus" />
+        <xs:element minOccurs="1" maxOccurs="1" name="product" type="tns:product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="updateProductRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="product" type="tns:product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="updateProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="status" type="tns:serviceStatus" />
+        <xs:element minOccurs="1" maxOccurs="1" name="product" type="tns:product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="deleteProductRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="deleteProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="status" type="tns:serviceStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="serviceStatus">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="code" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="product">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="productId" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="price" type="xs:int" />
+      <xs:element maxOccurs="1" name="description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
